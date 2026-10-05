@@ -1,0 +1,80 @@
+PRODUCT PREVIEW TESTER LICENSE
+Version 1.0 — 4 October 2026
+
+Copyright (c) 2026 RUSSELL PHILIP SMITHSON. All rights reserved except as
+expressly granted below.
+
+1. Scope
+This license covers the original UltraWide Appliance source code,
+documentation, examples, and configuration in this repository (the
+"Preview"). The copyright holder is the "Licensor". "You" means the
+individual or organization exercising the permissions below.
+
+2. Permission for preview testing
+Subject to these terms, the Licensor grants You a worldwide, non-exclusive,
+no-charge license to download, inspect, copy, build, run, and modify the
+Preview solely to evaluate it, test it, conduct internal experiments, and
+prepare feedback or proposed improvements. An organization may permit its
+employees and contractors to do this on its behalf under these same terms.
+
+You may maintain a public GitHub fork and submit patches for those purposes.
+Any copy or modification You share for preview testing must retain this
+license and copyright notices, identify Your changes, and remain subject
+to these terms. You may share test results and feedback without an obligation
+of confidentiality under this license.
+
+3. Uses requiring separate written permission
+This license does not authorize production deployment; operating the
+Preview as a service for customers or other third parties; selling,
+sublicensing, or commercially distributing the Preview or a derivative;
+or incorporating it into a product distributed beyond preview testing.
+Internal evaluation by a business is permitted under section 2.
+
+4. Ownership and feedback
+The Licensor retains ownership of the Preview. You retain ownership of
+Your original contributions. When You intentionally submit a contribution
+for inclusion in this project, You license that contribution under these
+same terms unless a separate written agreement applies. Ordinary feedback
+and suggestions may be used by the Licensor without payment or attribution;
+this does not transfer ownership of Your independently developed code.
+No trademark rights or rights beyond those stated here are granted.
+
+5. Third-party components
+This license does not replace, narrow, or override any license applying
+to third-party software. Linux, Alpine packages, Python, pycdlib, QEMU,
+and other separately obtained dependencies remain governed by their own
+licenses. A generated appliance image may contain such components; their
+applicable notices, source-availability duties, and other terms continue
+to apply. The restrictions above apply only to the original Preview.
+Rights independently granted by GitHub's terms are not restricted here.
+
+6. Preview status; no warranty or support commitment
+The Preview may be incomplete, change incompatibly, or contain errors.
+THE PREVIEW IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTIES
+OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT, TO THE MAXIMUM EXTENT
+PERMITTED BY APPLICABLE LAW. No support, maintenance, availability, or
+future-release commitment is made by this license.
+
+7. Limitation of liability
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE LICENSOR AND
+CONTRIBUTORS WILL NOT BE LIABLE FOR DAMAGES ARISING FROM USE OF OR
+INABILITY TO USE THE PREVIEW, INCLUDING LOST DATA, LOST PROFITS,
+BUSINESS INTERRUPTION, OR INDIRECT, INCIDENTAL, SPECIAL, OR
+CONSEQUENTIAL DAMAGES. Nothing excludes liability that cannot lawfully
+be excluded.
+
+8. Duration and termination
+There is no automatic calendar expiry for a copy received under these
+terms. Rights terminate if You materially breach this license and do
+not cure the breach within 30 days after receiving written notice.
+On termination, stop using and sharing the Preview and delete copies
+under Your control, except copies You must retain by law and copies
+held under independent third-party rights. Sections 4–8 survive to
+the extent applicable. Separate written permissions remain governed
+by their own terms.
+
+This is a custom, source-available evaluation license, not an
+OSI-approved open-source license. Requests for production or commercial
+rights may be directed to the repository owner at
+https://github.com/LKVexa/UltraWide-Appliance.
