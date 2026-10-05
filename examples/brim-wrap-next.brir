@@ -1,0 +1,4 @@
+BRIR/1.1
+unit=ultrawide.image|language=LCTL-BRIM/1|isa=4.1|abi=1.0|features=0x38|image=1|max_steps=16|declared=0x03|derived=0x03
+0|A001|ADD|WRAP|R1|R0|R0|C0|0|need=0x02|succ=1|line=3|stack=0|call=0
+1|A002|HALT|WRAP|R0|R0|R0|C0|0|need=0x01|succ=HALT|line=4|stack=0|call=0

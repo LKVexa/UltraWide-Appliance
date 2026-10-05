@@ -1,0 +1,20 @@
+; Full-width arithmetic, a backward branch, capability memory, stack and services.
+.capability console.write
+.width 1048576
+.mode wrapping
+_start:
+MOVI R0, 0
+MOVI R1, 1
+MOVI R2, 5
+loop:
+ADD R0, R0, R1
+CMP R0, R2
+JNZ loop
+STORE R0, C0, 0
+LOAD R3, C0, 0
+PUSH R3
+POP R4
+SVC 1, R4
+MOVI R5, 10
+SVC 4, R5
+HALT 0
