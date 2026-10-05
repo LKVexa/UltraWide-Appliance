@@ -1,0 +1,71 @@
+{
+  "schema": "ultrawide.generic-boot-probe.v1",
+  "firmware": "BIOS",
+  "iso_sha256": "a5e8f81a38d78558c1a52955ae8d2816d3c7cb958a53234212b86f565e514300",
+  "guest_memory_mib": 2048,
+  "virtual_cpus": 2,
+  "network_interface": false,
+  "host_disks_attached": false,
+  "source": "New generic UWA/0.1 build only",
+  "self_test": {
+    "checks": [
+      "source-roundtrip",
+      "highest-bit",
+      "wrapping-add",
+      "wrapping-subtract",
+      "xor",
+      "logical-right-shift",
+      "deterministic-replay"
+    ],
+    "language": "UWA/0.1",
+    "program_sha256": "8fdfb297b43428e3bf90d88f5572eca494dd80aa13341ab8ac5d6bb3c004dba3",
+    "scope": "generic software-word arithmetic scaffold; no existing ISA compatibility claim",
+    "status": "PASS",
+    "steps": 7,
+    "trace_sha256": "d7bd9f6ea37f2669adf5fa999ec3b3113493eab932938bb44828f3d588f0cddc",
+    "word_bits": 1048576
+  },
+  "kernel": "Linux 6.18.52-0-virt x86_64 Linux",
+  "volatile_state_marker": true,
+  "status": "PASS",
+  "elapsed_seconds": 31.06,
+  "qemu_stopped": true,
+  "iso_bytes": 82919424,
+  "tested_runtime_sources": [
+    {
+      "path": "src/ultrawide/__init__.py",
+      "sha256": "f94afefe94c52358ac47e5201433693395235d0ca72b8cb199c18e66d1a82f73"
+    },
+    {
+      "path": "src/ultrawide/__main__.py",
+      "sha256": "85b57c4d9b6281a3722c5c416bef3d7e44813dac156f7defe6c0a485717b0686"
+    },
+    {
+      "path": "src/ultrawide/program.py",
+      "sha256": "c994ad61ea6b42a011ea399cbda2d4a26d27b8a95b230ccba3e609253716deda"
+    },
+    {
+      "path": "src/ultrawide/word.py",
+      "sha256": "561f79ef51b4be440904eae6cb8cce66b22d25d60b9da7fb007a4af4972b0f22"
+    },
+    {
+      "path": "examples/high-bit.uwa",
+      "sha256": "8fdfb297b43428e3bf90d88f5572eca494dd80aa13341ab8ac5d6bb3c004dba3"
+    },
+    {
+      "path": "appliance/boot.start",
+      "sha256": "71c550f251f7114da5820428bb4075704187d198d2e23d8a5e153e7b006eb657"
+    },
+    {
+      "path": "appliance/ultrawide",
+      "sha256": "f4815c065a3867115156d3e947bbe505554e43962397b90535616b3f9423b8c4"
+    }
+  ],
+  "current_builder_sha256": "132a0db728280ab06d846d0b5392b86630f7c08750992ba235a034124f017bad",
+  "builder_note": "Archive validator was hardened after this ISO build; guest payload sources are unchanged and byte-verified against the ISO.",
+  "iso_and_raw_logs_published": false,
+  "scope": "Independent generic scaffold; no private appliance evidence reused",
+  "tested_input_lock_sha256": "a5132022786ac964cdc8978cae16f7f7ae5e15fa797da164e2bf67c57888435f",
+  "published_input_lock_sha256": "82893df8ffa05106cd66f5fb8469bab36c25b33c8cc3346d350f2510d3abee39",
+  "input_lock_note": "Git publication normalizes CRLF to LF; the parsed input lock and every package identity are unchanged."
+}
