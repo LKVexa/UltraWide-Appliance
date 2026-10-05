@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ultrawide-appliance-preview"
-version = "0.1.0"
-description = "Generic product preview scaffold for software ultra-wide words and a Linux appliance"
+version = "0.2.0"
+description = "BASIC-1048576 virtual appliance with lossless LCTL-WIDE translation and BRIM image binding"
 readme = "README.md"
 requires-python = ">=3.12"
-license = "LicenseRef-Product-Preview-Tester-1.0"
+license = "LicenseRef-Product-Preview-Tester-1.1"
 license-files = ["LICENSE"]
 authors = [{name = "RUSSELL PHILIP SMITHSON"}]
 dependencies = []
@@ -22,3 +22,6 @@ Issues = "https://github.com/LKVexa/UltraWide-Appliance/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"ultrawide.shs" = ["PROVENANCE.json"]
