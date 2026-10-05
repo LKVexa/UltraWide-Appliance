@@ -1,0 +1,184 @@
+{
+  "brim_interoperability": {
+    "candidate_pure_policy_executions_matched": 36,
+    "existing_images_parsed": 12,
+    "matching_bounded_faults": 0,
+    "new_wide_images_accepted_by_existing_independent_verifier": 2,
+    "observed_dialect": "BR-480 ISA4.1 BRPV1.1",
+    "scope": "Format interoperability and the shared bounded input domain; not native compiler or signature certification",
+    "status": "PASS"
+  },
+  "command": "PYTHONPATH=src python -m unittest discover -s tests -v",
+  "examples": {
+    "brim-one-word.brw": {
+      "R0_highest_bit_set": true,
+      "bytes": 131072,
+      "final_register_state_sha256": "742e2e4bec8b7e1ae8cf5c9cf9f3aeb46f20e459bafe05c0fb0c21589475c4dd",
+      "matches_current_demo_compilation_exactly": true,
+      "operand_roundtrip_exact": true,
+      "sha256": "024cb0c01b22a0bfb26def4d864fd47c05d33d0e753bbfd08a458ef555bdcf7e",
+      "steps": 3,
+      "words": 1
+    },
+    "brim-word-chain.brw": {
+      "R0_highest_bit_set": true,
+      "bytes": 262144,
+      "final_register_state_sha256": "742e2e4bec8b7e1ae8cf5c9cf9f3aeb46f20e459bafe05c0fb0c21589475c4dd",
+      "matches_current_demo_compilation_exactly": true,
+      "operand_roundtrip_exact": true,
+      "sha256": "e7ac6963c00ee769ca65ef5899196bd8a914ac5ffb51607087ecdc008aa7ac6b",
+      "steps": 5,
+      "words": 2
+    },
+    "shs-control-memory-stack.lctlw": {
+      "image_roundtrip_exact": true,
+      "image_sha256": "3728714cd5d196181921397ce032afdb1b3806e132179d6cd03e2c09de36c593",
+      "source_sha256": "f36469e74ceaf4836bb69490ed8e231e436943402008be7af34cd46471e97d20",
+      "stdout": "5\n",
+      "steps": 26,
+      "trace_sha256": "53a8c40df45eedae0182ed024e7bcc8bd7510514684429f3aa3d2306e6df06f4"
+    },
+    "shs-high-bit.lctlw": {
+      "image_roundtrip_exact": true,
+      "image_sha256": "9f01247d70d41fb8d3ec5f2d971814c749a864f43a594b5ca7ebe035cfc72b7d",
+      "source_sha256": "c4f9972eb8e046e6be4ffc572cccd8104a6a6dd637271fcbd042ec0322179f9d",
+      "stdout": "",
+      "steps": 6,
+      "trace_sha256": "0e1587b887d81b17cb4e0d2875ca103c0cb43738c83ceceb5cc6d2e2f5eb70d7"
+    }
+  },
+  "host": {
+    "python_implementation": "CPython",
+    "python_version": "3.12.14",
+    "system": "Windows"
+  },
+  "preserved_authority": {
+    "assembler_comparison": "Compared after LF normalization; Git text canonicalization plus the relative import change only.",
+    "assembler_only_relative_import_changed": true,
+    "assembler_sha256": "e88d9027b4e91550ee173867300686265186085688bcdaab5291b0aee5c4da80",
+    "embedded_source": "modules/BASIC_1048576_UNIVERSE/basic_os/src/basic_os/basic1048576.py",
+    "installer_name": "BASIC-1048576-Universe-JA20-4.0.0-x64.exe",
+    "matches_extracted_source_byte_for_byte": true,
+    "packaged_source": "src/ultrawide/shs/reference.py",
+    "sha256": "f7af5b056131fa3227da090670f547189f19c905d66c038e1cd54e59d7de4b0b"
+  },
+  "release": "0.2.0",
+  "schema": "ultrawide.runtime-verification.v1",
+  "scope_limits": [
+    "Hosted Python ISA runtime, not native compiler self-hosting.",
+    "BRIM execution covers nineteen pure arithmetic/control instructions; full SHS execution covers its separate twenty-four-instruction ISA.",
+    "LCTLC-WIDE/0.1 and LCTL-BRIM/1 are explicit new dialects, not stock corpus compiler compatibility.",
+    "Hashes establish integrity, not author authentication or a signature trust authority.",
+    "This is a host runtime suite, not a new BIOS or UEFI boot test."
+  ],
+  "self_tests": {
+    "brim_word_chain": {
+      "chain_sha256": "e7ac6963c00ee769ca65ef5899196bd8a914ac5ffb51607087ecdc008aa7ac6b",
+      "checks_passed": 8,
+      "format": "BRWWORD/1",
+      "scope": "LCTL compilation and complete-image packing; operand roundtrip; high-bit BRIM execution; register handoff; wrapping arithmetic; three corruptions",
+      "status": "PASS",
+      "word_bits": 1048576,
+      "word_bytes": 131072,
+      "words": 2
+    },
+    "shs": {
+      "checks_passed": 7,
+      "executable_sha256": "9f01247d70d41fb8d3ec5f2d971814c749a864f43a594b5ca7ebe035cfc72b7d",
+      "language": "LCTLC-WIDE/0.1",
+      "reference_sha256": "f7af5b056131fa3227da090670f547189f19c905d66c038e1cd54e59d7de4b0b",
+      "registers": 16,
+      "scope": "reference identity; exact source/image roundtrip; top-bit carry; memory; three tamper cases",
+      "source_sha256": "c4f9972eb8e046e6be4ffc572cccd8104a6a6dd637271fcbd042ec0322179f9d",
+      "status": "PASS",
+      "steps": 6,
+      "trace_sha256": "0e1587b887d81b17cb4e0d2875ca103c0cb43738c83ceceb5cc6d2e2f5eb70d7",
+      "translation_scope": "Recovered full ISA virtualization; hosted runtime, not native compiler self-hosting",
+      "word_bits": 1048576
+    }
+  },
+  "shs_conformance": {
+    "arithmetic_modes": 4,
+    "independent_expectation_vectors": 187,
+    "independent_integer_interval_cases": 216,
+    "lane_widths": 18,
+    "method": "Explicit expected architectural states plus exact instruction-byte roundtrip and preserved-reference comparison; additional independent integer-interval arithmetic model.",
+    "opcodes": 24
+  },
+  "source_sha256": {
+    "examples/brim-one-word.brw": "024cb0c01b22a0bfb26def4d864fd47c05d33d0e753bbfd08a458ef555bdcf7e",
+    "examples/brim-top-bit.brimg": "70ea91ca48b9909db790838e14bb5e1c0b2805c358c0d951fb11882ddc7721f0",
+    "examples/brim-top-bit.brir": "f51b170aee00e7aef24973d8e77673651ea0de08700722ef7f9b0e7c922eed85",
+    "examples/brim-top-bit.lctlb": "c1aebc59aef9f41e091aafa807f064da0449a9ecfc7578cfc90532417f00d3bc",
+    "examples/brim-word-chain.brw": "e7ac6963c00ee769ca65ef5899196bd8a914ac5ffb51607087ecdc008aa7ac6b",
+    "examples/brim-wrap-next.brimg": "b4404c5e984a2641d17b055defa7a240a520d94f1d53bc491a7078fe613171af",
+    "examples/brim-wrap-next.brir": "9feeb7f0e8db8d5059d69367d87a763d34c8e9f84087e06a218f68a8e79cc685",
+    "examples/brim-wrap-next.lctlb": "73724b4b4b16c3bd2833b3a872ce38c5384f62caa065079580e7347c14fa0f8a",
+    "examples/high-bit.uwa": "8fdfb297b43428e3bf90d88f5572eca494dd80aa13341ab8ac5d6bb3c004dba3",
+    "examples/shs-binding.brimg": "c30936e870a95c4e26053fb3884b58fc3e4e55c004024c63e62e0a934e90d03a",
+    "examples/shs-binding.brir": "8694f489ec52c7d16891a752db86e603a272bb2f37fa39c12ff8e1b38dbc3eff",
+    "examples/shs-brim-bundle-demo.lctlw": "c4f9972eb8e046e6be4ffc572cccd8104a6a6dd637271fcbd042ec0322179f9d",
+    "examples/shs-control-memory-stack.b1048576asm": "c408a8041d5af93972b7fc250fc54a613b84361cddd0d9c8090d25f0078161f9",
+    "examples/shs-control-memory-stack.lctlw": "f36469e74ceaf4836bb69490ed8e231e436943402008be7af34cd46471e97d20",
+    "examples/shs-demo.uwabundle": "4812a43c83d83a5f21dfb6fba92f1a1616692481a166b47cc60d6f81e27bc3e9",
+    "examples/shs-high-bit.lctlw": "c4f9972eb8e046e6be4ffc572cccd8104a6a6dd637271fcbd042ec0322179f9d",
+    "src/ultrawide/__init__.py": "68b13dd7be573cceb2a9aec854c4ceb7fd4bb74d36f0815e311d32e06106b7d9",
+    "src/ultrawide/__main__.py": "0964cfffabdeaef194426c2a8d89f5faa15abab4c247295818fae719d993e9b4",
+    "src/ultrawide/brim.py": "291099e7a39697899df644bef5e6fd13f813e0dfc6aa8bd58e14a72e2b4a6c0a",
+    "src/ultrawide/brim_wide.py": "decf3f0397f81bf7515d99f6d9cadd9d027c36beaba5cd09cb2ec7b302193d13",
+    "src/ultrawide/program.py": "c994ad61ea6b42a011ea399cbda2d4a26d27b8a95b230ccba3e609253716deda",
+    "src/ultrawide/repository.py": "5b2a48e444f1cf3ef12f00cb49a4576a052123ce5bc25f6072940b8815a08f37",
+    "src/ultrawide/shs/PROVENANCE.json": "a775428f2486c7f57164a6a45b8bedf415ff122678cccbc87eebcf57436b62e7",
+    "src/ultrawide/shs/__init__.py": "342077187698bcadd224512b4dbc14496fee1a12b079e646ad709d3c753ee69f",
+    "src/ultrawide/shs/assembly.py": "e88d9027b4e91550ee173867300686265186085688bcdaab5291b0aee5c4da80",
+    "src/ultrawide/shs/engine.py": "11b5f9983a0a2357fd207fe6e7be47bfe14f22e105063658f086b6eafcc092a7",
+    "src/ultrawide/shs/reference.py": "f7af5b056131fa3227da090670f547189f19c905d66c038e1cd54e59d7de4b0b",
+    "src/ultrawide/word.py": "561f79ef51b4be440904eae6cb8cce66b22d25d60b9da7fb007a4af4972b0f22",
+    "tests/test_brim.py": "16fee9120a1db1743563eda7042fa741fc705bb74bd57eca8f94e10c7260fab4",
+    "tests/test_brim_wide.py": "4e845f7e67f8ee614cc5c19b02fb16becddd724f93cd92dd014d01f5b4bca619",
+    "tests/test_build.py": "22bcd134e1e0dc25895d7190dbf999e9663b9fadde569f5f8932bc54e6d91a11",
+    "tests/test_cli.py": "a48c0b2d087dda6fbf06a31834562b10cacdc523c9ebb9407dfe2bdda8037e93",
+    "tests/test_program.py": "8d2874ac5c3a175eb51b970eb983c7ed53e169653fb58a684df2e196af878b9e",
+    "tests/test_repository.py": "40145822fb2e2de1a871fd64fef101761f651f562fc1ac42f0a363442a2392cd",
+    "tests/test_shs_hardening.py": "16272d6112c5577d1508198b65b00025f65dde9886d902171a3c783ea14c4ae7",
+    "tests/test_shs_isa_vectors.py": "dc7a767554c463cd4b93b669e79338d102b287e338e50c014ca560856af202b6",
+    "tests/test_shs_vectors.py": "84881f0f7d047d39b37298985d34aeda481e502d89ac33b730fbd31e94e7019b",
+    "tests/test_word.py": "fb9b46b4fb6bfbaefcaccee4d34d33801ab1d44e85ed262403882779671e800c"
+  },
+  "sources_changed_during_verification": [],
+  "started_utc": "2026-10-05T03:15:09.040318+00:00",
+  "status": "PASS",
+  "suite": {
+    "elapsed_seconds": 32.137,
+    "errors": 0,
+    "failures": 0,
+    "methods_by_module": {
+      "test_brim": 31,
+      "test_brim_wide": 17,
+      "test_build": 10,
+      "test_cli": 10,
+      "test_program": 19,
+      "test_repository": 12,
+      "test_shs_hardening": 20,
+      "test_shs_vectors": 24,
+      "test_word": 11
+    },
+    "passed": 153,
+    "skip_reasons": [
+      {
+        "reason": "Host does not permit creating symbolic links",
+        "test": "test_repository.RepositoryTests.test_symbolic_link_root_and_object_are_rejected_when_supported"
+      }
+    ],
+    "skipped": 1,
+    "subtests_exercised": 1037,
+    "tests_run": 154
+  },
+  "validation_source": {
+    "all_source_hashes_match_staged_git_bytes": true,
+    "hashed_files": 38,
+    "index_mismatches": [],
+    "kind": "Canonical staged Git files exported without checkout line-ending conversion",
+    "suite_executed_in_exported_build_tree": true
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "ultrawide.boot-qualification.v2",
+  "firmware": "uefi",
+  "iso_name": "UltraWide-Appliance-0.2.0-x86_64.iso",
+  "iso_bytes": 83171328,
+  "guest_memory_mib": 2048,
+  "virtual_cpus": 2,
+  "network_interface": false,
+  "host_disks_attached": false,
+  "shared_folders": false,
+  "status": "PASS",
+  "checks": {
+    "runtime_self_test": true,
+    "wide_word": true,
+    "firmware": true,
+    "volatile_state": true,
+    "unprivileged_console": true,
+    "shadow_unreadable": true
+  },
+  "iso_sha256": "94fbf67d3038d43776b5169763b8ddcf5a6c683cda1f55447755aa494cad59e5",
+  "firmware_code_sha256": "33090cc07675baa5190d9f1e84bf5176b33bcbfa9bacac522961150cdb6dbb2a",
+  "self_test": {
+    "profiles": {
+      "brim_word_chain": {
+        "chain_sha256": "e7ac6963c00ee769ca65ef5899196bd8a914ac5ffb51607087ecdc008aa7ac6b",
+        "checks_passed": 8,
+        "format": "BRWWORD/1",
+        "scope": "LCTL compilation and complete-image packing; operand roundtrip; high-bit BRIM execution; register handoff; wrapping arithmetic; three corruptions",
+        "status": "PASS",
+        "word_bits": 1048576,
+        "word_bytes": 131072,
+        "words": 2
+      },
+      "shs": {
+        "checks_passed": 7,
+        "executable_sha256": "9f01247d70d41fb8d3ec5f2d971814c749a864f43a594b5ca7ebe035cfc72b7d",
+        "language": "LCTLC-WIDE/0.1",
+        "reference_sha256": "f7af5b056131fa3227da090670f547189f19c905d66c038e1cd54e59d7de4b0b",
+        "registers": 16,
+        "scope": "reference identity; exact source/image roundtrip; top-bit carry; memory; three tamper cases",
+        "source_sha256": "c4f9972eb8e046e6be4ffc572cccd8104a6a6dd637271fcbd042ec0322179f9d",
+        "status": "PASS",
+        "steps": 6,
+        "trace_sha256": "0e1587b887d81b17cb4e0d2875ca103c0cb43738c83ceceb5cc6d2e2f5eb70d7",
+        "translation_scope": "Recovered full ISA virtualization; hosted runtime, not native compiler self-hosting",
+        "word_bits": 1048576
+      },
+      "uwa": {
+        "checks": [
+          "source-roundtrip",
+          "highest-bit",
+          "wrapping-add",
+          "wrapping-subtract",
+          "xor",
+          "logical-right-shift",
+          "deterministic-replay"
+        ],
+        "language": "UWA/0.1",
+        "program_sha256": "8fdfb297b43428e3bf90d88f5572eca494dd80aa13341ab8ac5d6bb3c004dba3",
+        "scope": "generic software-word arithmetic scaffold; no existing ISA compatibility claim",
+        "status": "PASS",
+        "steps": 7,
+        "trace_sha256": "d7bd9f6ea37f2669adf5fa999ec3b3113493eab932938bb44828f3d588f0cddc",
+        "word_bits": 1048576
+      }
+    },
+    "schema": "ultrawide.self-test.v2",
+    "status": "PASS",
+    "word_bits": 1048576
+  },
+  "kernel": "Linux 6.18.52-0-virt x86_64 Linux",
+  "console_uid": 1000,
+  "qemu_stopped": true,
+  "elapsed_seconds": 124.33,
+  "source_binding": "source-overlay-0.2.json"
+}
