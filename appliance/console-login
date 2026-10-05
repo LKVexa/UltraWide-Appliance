@@ -1,0 +1,4 @@
+#!/bin/sh
+# Invoked by getty after OpenRC completes; no passwordless root maintenance login.
+set -eu
+exec /bin/su -s /bin/sh - ultrawide
