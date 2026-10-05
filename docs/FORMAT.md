@@ -1,5 +1,9 @@
 # UWA/0.1 program format
 
+This page documents the retained 0.1 arithmetic demonstration. For the restored
+machine and new image workflows, see [SHS-FORMAT.md](SHS-FORMAT.md),
+[BRIM.md](BRIM.md), and [WORD-CHAIN.md](WORD-CHAIN.md).
+
 UWA/0.1 is a small custom arithmetic demonstration format with eight explicit columns. It is not a compatibility layer for an existing ISA or programming language. Programs run in eight zero-initialized software registers, R0 through R7, at one declared unsigned word width. Execution is straight-line and ends in HALT.
 
 ## Source structure
