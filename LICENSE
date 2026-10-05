@@ -1,14 +1,20 @@
 PRODUCT PREVIEW TESTER LICENSE
-Version 1.0 — 4 October 2026
+Version 1.1 — 4 October 2026
 
 Copyright (c) 2026 RUSSELL PHILIP SMITHSON. All rights reserved except as
 expressly granted below.
 
 1. Scope
-This license covers the original UltraWide Appliance source code,
-documentation, examples, and configuration in this repository (the
-"Preview"). The copyright holder is the "Licensor". "You" means the
-individual or organization exercising the permissions below.
+This license covers the UltraWide Appliance preview material made available
+by the Licensor in this repository, to the extent the Licensor holds the
+rights to license it (the "Preview"). This includes the BASIC-compatible
+virtual runtime and supplied reference integration, LCTL extension tools,
+BRIM image tools, complete-program word-chain format, repository adapter,
+build scripts, documentation, tests, and example images. It does not grant
+rights to unrelated source archives, datasets, applications, models, or
+third-party components merely mentioned in the documentation.
+The copyright holder is the "Licensor". "You" means the individual or
+organization exercising the permissions below.
 
 2. Permission for preview testing
 Subject to these terms, the Licensor grants You a worldwide, non-exclusive,
@@ -38,6 +44,9 @@ same terms unless a separate written agreement applies. Ordinary feedback
 and suggestions may be used by the Licensor without payment or attribution;
 this does not transfer ownership of Your independently developed code.
 No trademark rights or rights beyond those stated here are granted.
+Retain source provenance and identify changes to reference implementations,
+language dialects, image formats, and test evidence when sharing a modified
+preview. Do not present modified artifacts as an unchanged upstream release.
 
 5. Third-party components
 This license does not replace, narrow, or override any license applying
@@ -50,6 +59,9 @@ Rights independently granted by GitHub's terms are not restricted here.
 
 6. Preview status; no warranty or support commitment
 The Preview may be incomplete, change incompatibly, or contain errors.
+Tests, hashes, audit records, and successful virtual-machine boots describe
+their recorded scope. They are not a warranty of production suitability,
+native compiler compatibility, signer authentication, or security certification.
 THE PREVIEW IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTIES
 OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS
 FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT, TO THE MAXIMUM EXTENT

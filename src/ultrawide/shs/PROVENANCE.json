@@ -1,0 +1,36 @@
+{
+  "schema": "ultrawide.shs.reference-provenance.v1",
+  "reference": {
+    "file": "reference.py",
+    "source_name": "BASIC-1048576-Universe-JA20-4.0.0-x64.exe",
+    "embedded_source": "modules/BASIC_1048576_UNIVERSE/basic_os/src/basic_os/basic1048576.py",
+    "sha256": "f7af5b056131fa3227da090670f547189f19c905d66c038e1cd54e59d7de4b0b",
+    "modified": false
+  },
+  "assembler": {
+    "file": "assembly.py",
+    "embedded_source": "modules/BASIC_1048576_UNIVERSE/basic_os/src/basic_os/basic1048576_asm.py",
+    "modification": "Only relative import redirected from .basic1048576 to .reference; wrapper validates bounds and operand counts before use."
+  },
+  "language": {
+    "name": "LCTLC-WIDE/0.1",
+    "qualification": "Explicit classical execution extension; not accepted by the stock quantum LCTL compiler.",
+    "reference_image_magic": "B1048576E followed by NUL",
+    "source_roundtrip": "Retains every instruction field and the raw original JSON header for exact accepted-image roundtrip."
+  },
+  "hardening_changes": [
+    "Bounded instructions, source lines, cells, header nesting, image bytes, memory, output, steps and cooperative wall time",
+    "Strict JSON duplicate keys, finite constants, architecture version and integer field types",
+    "Reject capability descriptors outside physical memory and invalid stack pointers",
+    "Reject surrogate PRINT_CHAR values as defined VM faults",
+    "Exact chunked decimal rendering without changing Python global digit limits",
+    "Single-use bounded VM instances; output refusal before append"
+  ],
+  "compatibility_limits": [
+    "No object linker or multi-object relocation compatibility is claimed.",
+    "The recovered assembler applies its final width and mode directives to all instructions; this behavior is retained.",
+    "Named capabilities gate image loading; they are not per-service authorization checks in the recovered ISA.",
+    "Stack PUSH/POP retain the recovered direct-memory stack behavior rather than an invented capability protocol.",
+    "Python hosts the ISA execution; the package does not assert native compiler self-hosting."
+  ]
+}

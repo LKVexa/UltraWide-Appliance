@@ -9,14 +9,24 @@ echo 'Installing the hash-pinned, signed local Python packages without network..
 # Signature checks remain enabled; --force-non-repository is not --allow-untrusted.
 /sbin/apk add --no-network --no-cache --force-non-repository /opt/ultrawide/packages/*.apk
 id ultrawide >/dev/null 2>&1 || adduser -D -h /home/ultrawide -s /bin/sh ultrawide
+# The attached console is unprivileged. Root authentication stays locked.
+passwd -l root
+chmod 700 /home/ultrawide
 ip link set lo up
+echo 'ULTRAWIDE_CONSOLE_ACCOUNT=ultrawide'
+if [ -e /sys/firmware/efi/fw_platform_size ]; then
+    echo "ULTRAWIDE_FIRMWARE=UEFI$(cat /sys/firmware/efi/fw_platform_size)"
+else
+    echo 'ULTRAWIDE_FIRMWARE=BIOS'
+fi
 echo 'ULTRAWIDE_BOOT_SELF_TEST_BEGIN'
 su -s /bin/sh -c '/usr/local/bin/ultrawide self-test' ultrawide
 echo 'ULTRAWIDE_BOOT_SELF_TEST_END'
-echo 'Preview console: root, no password. No SSH service or network interface is configured.'
-echo 'Try: ultrawide demo'
-echo 'Try: ultrawide run /opt/ultrawide/examples/high-bit.uwa'
-echo 'Shut down with: poweroff'
+echo 'Preview console runs as ultrawide. Root is locked; no SSH service is configured.'
+echo 'Try: ultrawide shs self-test'
+echo 'Try: ultrawide shs run /opt/ultrawide/examples/shs-control-memory-stack.lctlw'
+echo 'Try: ultrawide chain run /opt/ultrawide/examples/brim-word-chain.brw'
+echo 'Guest work disappears at shutdown. QEMU console: Ctrl-A then X to stop.'
 if [ -x /opt/ultrawide/appliance/application.start ]; then
     echo 'Starting the application hook explicitly included by this image builder...'
     su -s /bin/sh -c 'exec /opt/ultrawide/appliance/application.start' ultrawide &

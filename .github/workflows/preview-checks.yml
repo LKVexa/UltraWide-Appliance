@@ -32,6 +32,14 @@ jobs:
         run: python -m ultrawide self-test
       - name: Run the checked-in program
         run: python -m ultrawide run examples/high-bit.uwa
+      - name: Exercise the restored SHS machine
+        run: python -m ultrawide shs run examples/shs-control-memory-stack.lctlw
+      - name: Verify and execute complete BRIM program words
+        run: |
+          python -m ultrawide chain verify examples/brim-word-chain.brw
+          python -m ultrawide chain run examples/brim-word-chain.brw
+          python -m ultrawide chain pack "$RUNNER_TEMP/rebuilt.brw" examples/brim-top-bit.lctlb examples/brim-wrap-next.lctlb
+          cmp examples/brim-word-chain.brw "$RUNNER_TEMP/rebuilt.brw"
       - name: Validate the source overlay
         run: python scripts/build_iso.py --check
       - name: Compile source and build scripts

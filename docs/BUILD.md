@@ -1,11 +1,11 @@
-# Build the generic Linux preview
+# Build the ultra-wide Linux preview
 
-This source scaffold builds a new x86-64 Alpine optical boot image containing
-the independent `ultrawide` Python package and its console interface. It uses
-the custom **UWA/0.1** subset; it is not an LCTL compiler or a compatibility
-implementation of another virtual machine. No private application, model,
-corpus, recovered interpreter, emulator binary, APK, repository-index snapshot
-or prebuilt ISO is included in this repository.
+This build kit produces an x86-64 Alpine optical boot image containing the
+restored BASIC machine, reversible LCTL-WIDE translation, BRIM compiler/runtime,
+complete-program word chains, and explicit object storage. The older UWA demo
+remains available. No private application, model, corpus, emulator binary,
+APK, repository-index snapshot or prebuilt Linux ISO is included in this
+source repository. The recovered BASIC reference and its provenance are included.
 
 The build script can generate BIOS and UEFI boot entries. ISO construction and
 source-overlay validation do not prove a successful boot. The script records
@@ -100,20 +100,21 @@ Successful startup should print `ULTRAWIDE_GUEST_UNAME`, followed by the actual
 Record the ISO checksum and the new guest output yourself; do not treat this
 expected sequence as a supplied boot receipt.
 
-The local maintenance console accepts `root` with no password. This is a
-deliberately isolated development image, not a hardened multi-user deployment.
-At the console, try:
+The console automatically runs as the unprivileged `ultrawide` account. Root's
+password is locked. This remains an isolated development image, not a qualified
+multi-user deployment. At the console, try:
 
 ```sh
 ultrawide self-test
-ultrawide demo
-ultrawide run /opt/ultrawide/examples/high-bit.uwa
-poweroff
+ultrawide shs run /opt/ultrawide/examples/shs-control-memory-stack.lctlw
+ultrawide chain run /opt/ultrawide/examples/brim-word-chain.brw
 ```
 
 All guest state is volatile and disappears at shutdown. The boot scripts do
 not partition, format or attach disks. The provided launcher selects legacy
-BIOS. Local BIOS and 64-bit UEFI smoke tests are recorded in
+BIOS by default. Use `--uefi --firmware-dir /path/to/qemu/share` for QEMU edk2;
+temporary variable storage is removed when QEMU exits. Use **Ctrl-A then X**
+to stop the console VM. Local BIOS and 64-bit UEFI checks are recorded in
 [VERIFICATION.md](VERIFICATION.md); verify new builds and firmware configurations
 separately. Physical hardware has not been tested. The image
 is not Secure Boot signed and does not contain a graphical desktop or browser.
@@ -139,7 +140,22 @@ dependencies, supervision, persistence, authentication and network access are
 the integrator's responsibility. This flag does not enable guest networking.
 Keep secrets and private data out of the repository and image source roots.
 
-Only `src/ultrawide/*.py` (including subdirectories), `examples/*.uwa`, the two
-known appliance scripts and existing project README, license and third-party
-notices enter the default source overlay. Cache directories, test logs and unrelated files are
-not swept into the image. User source symlinks are rejected.
+Only recursive `src/ultrawide/*.py`, its reference provenance record, explicit
+example suffixes (`.uwa`, `.lctlw`, `.lctlb`, `.b1048576asm`, `.brimg`, `.brir`,
+`.brw`, `.b1048576`, `.uwabundle`), three known appliance scripts and project
+license notices enter the source overlay. Cache directories, test logs and
+unrelated files are excluded. User source symlinks are rejected.
+
+## Reproduce isolated firmware qualification
+
+```sh
+python scripts/qualify_boot.py --iso dist/UltraWide-Appliance-preview-x86_64.iso --output bios-check
+python scripts/qualify_boot.py --iso dist/UltraWide-Appliance-preview-x86_64.iso --output uefi-check --firmware uefi --firmware-dir /path/to/qemu/share
+```
+
+Pass `--qemu /path/to/qemu-system-x86_64` when QEMU is not on PATH. Each check
+requires a new output directory, attaches no host disks, folders or network
+interface, records the exact ISO digest and actual guest self-test, confirms
+firmware and the unprivileged console UID, and stops its QEMU process. Raw
+serial logs remain local; publish only reviewed receipts. These checks do not
+test physical hardware, Secure Boot or application integrations.

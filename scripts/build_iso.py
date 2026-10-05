@@ -1,6 +1,6 @@
 """Create a fresh diskless preview ISO from pinned public Alpine inputs.
 
-Only the generic runtime, examples, appliance hooks and project notices enter
+Only the virtual runtime, examples, appliance hooks and project notices enter
 the overlay. This script does not download anything or modify attached disks.
 Use --check for a source-overlay preflight without downloading/building an ISO.
 """
@@ -31,7 +31,8 @@ SERVICES = {
 def source_files(root=ROOT, include_hook=False):
     """Explicit source roots avoid accidentally packaging caches or private data."""
     selected = []
-    for folder, suffixes in (('src/ultrawide', {'.py'}), ('examples', {'.uwa'})):
+    for folder, suffixes in (('src/ultrawide', {'.py'}),
+                             ('examples', {'.uwa', '.lctlw', '.lctlb', '.b1048576asm', '.brimg', '.brir', '.brw', '.b1048576', '.uwabundle'})):
         base = root / folder
         if not base.is_dir() or base.is_symlink():
             raise ValueError('Required regular source directory is missing: ' + folder)
@@ -40,7 +41,10 @@ def source_files(root=ROOT, include_hook=False):
                 raise ValueError('Source symlinks are not admitted: ' + str(path))
             if path.is_file() and path.suffix in suffixes and '__pycache__' not in path.parts:
                 selected.append((path, 'opt/ultrawide/' + path.relative_to(root).as_posix(), 0o644))
-    for name in ('LICENSE', 'README.md', 'THIRD-PARTY-NOTICES.md'):
+    for name in ('LICENSE', 'README.md', 'THIRD-PARTY-NOTICES.md',
+                 'docs/licenses/SUPPLIED-PREVIEW-NOTICE.md', 'src/ultrawide/shs/PROVENANCE.json',
+                 'docs/BUILD.md', 'docs/BRIM.md', 'docs/SHS-AUDIT.md', 'docs/SHS-FORMAT.md',
+                 'docs/WORD-CHAIN.md', 'docs/REPOSITORY.md', 'docs/FORMAT.md', 'docs/images/brim-word.png'):
         path = root / name
         if path.is_file():
             if path.is_symlink():
@@ -49,6 +53,7 @@ def source_files(root=ROOT, include_hook=False):
     for source, target, mode in (
         ('appliance/boot.start', 'etc/local.d/ultrawide.start', 0o755),
         ('appliance/ultrawide', 'usr/local/bin/ultrawide', 0o755),
+        ('appliance/console-login', 'usr/local/bin/ultrawide-login', 0o755),
     ):
         path = root / source
         if path.is_symlink() or not path.is_file():
@@ -89,7 +94,11 @@ def make_overlay(lock, cache=None, *, root=ROOT, include_hook=False):
             # Python is installed later from explicit signed local files. It
             # must not be requested from unavailable mutable repository indexes.
             add('etc/apk/world', 'alpine-base\n')
-            add('etc/motd', 'UltraWide Appliance Product Preview\nConsole-only UWA/0.1 reference subset; guest state is volatile.\n')
+            add('etc/motd', 'UltraWide Appliance 0.2 Product Preview\nBASIC-1048576 virtual machine, LCTL-WIDE and BRIM tooling.\nGuest state is volatile. Console runs as unprivileged ultrawide.\n')
+            add('etc/inittab', '::sysinit:/sbin/openrc sysinit\n::sysinit:/sbin/openrc boot\n::wait:/sbin/openrc default\n'
+                'tty1::respawn:/sbin/getty -n -l /usr/local/bin/ultrawide-login 38400 tty1\n'
+                'ttyS0::respawn:/sbin/getty -n -l /usr/local/bin/ultrawide-login 115200 ttyS0 vt100\n'
+                '::ctrlaltdel:/sbin/reboot\n::shutdown:/sbin/openrc shutdown\n')
             add('etc/profile.d/ultrawide.sh', 'export PYTHONPATH=/opt/ultrawide/src\nexport PYTHONDONTWRITEBYTECODE=1\n')
             for level, services in SERVICES.items():
                 for service in services:
@@ -193,7 +202,8 @@ def build_iso(cache, output, *, include_hook=False):
               'file': output.name, 'bytes': output.stat().st_size, 'sha256': digest,
               'inputs': verified, 'overlay': overlay_check, 'application_hook_included': include_hook,
               'boot_tested': False, 'source_files': len(inventory),
-              'language': 'UWA/0.1 custom educational subset; not an LCTL compiler or BASIC compatibility implementation'}
+              'language': 'LCTLC-WIDE/0.1 classical extension; BASIC-1048576 architecture 0.2.0; BRIM/BRPV image binding',
+              'console_account': 'ultrawide (unprivileged)', 'root_password_locked': True}
     with output.with_suffix('.iso.sha256').open('x', encoding='utf-8') as stream:
         stream.write(digest + '  ' + output.name + '\n')
     with output.with_suffix('.build.json').open('x', encoding='utf-8') as stream:

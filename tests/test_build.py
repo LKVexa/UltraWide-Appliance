@@ -25,7 +25,7 @@ def write_fixture(root, name, data='fixture\n'):
 def source_fixture(root):
     for name in ('src/ultrawide/__main__.py', 'src/ultrawide/word.py',
                  'examples/example.uwa', 'appliance/boot.start', 'appliance/ultrawide',
-                 'LICENSE', 'README.md', 'THIRD-PARTY-NOTICES.md'):
+                        'appliance/console-login', 'LICENSE', 'README.md', 'THIRD-PARTY-NOTICES.md'):
         write_fixture(root, name)
 
 

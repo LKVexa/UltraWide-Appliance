@@ -1,0 +1,20 @@
+LCTLC-WIDE/0.1
+# Classical extension; execution backend: recovered BASIC Python reference.
+@header eyJhcmNoaXRlY3R1cmUiOiJCQVNJQy0xMDQ4NTc2IiwiYXJjaGl0ZWN0dXJlX3ZlcnNpb24iOiIwLjIuMCIsImNhcGFiaWxpdGllcyI6WyJjb25zb2xlLndyaXRlIl0sImNvZGVfc2hhMjU2IjoiNjFkODcwYjBlODI4OTBkOTQwNzRlYjAzM2RjODY3ODMzMmVkZGJhMmUyOWI1ZDgyNDkxZmIwNDZhYzcyOGFhZSIsImNvZGVfc2l6ZSI6MTgzNTQ1NiwiZGVidWciOnsibGFiZWxzIjp7Il9zdGFydCI6MCwibG9vcCI6M319LCJlbmRpYW5uZXNzIjoibGl0dGxlIiwiZW50cnlfaW5zdHJ1Y3Rpb24iOjAsImZvcm1hdF92ZXJzaW9uIjoxLCJpbnN0cnVjdGlvbl9ieXRlcyI6MTMxMTA0LCJwcm9maWxlX2Jhc2UiOjIsInByb2ZpbGVfZXhwb25lbnQiOjIwLCJ3b3JkX2JpdHMiOjEwNDg1NzZ9
+ID|LANE|OP|OUT|CTRL|IN|ARG|META
+I0000|cpu|MOVI|R0|R0|R0|0x0|width=1048576;mode=wrapping
+I0001|cpu|MOVI|R1|R0|R0|0x1|width=1048576;mode=wrapping
+I0002|cpu|MOVI|R2|R0|R0|0x5|width=1048576;mode=wrapping
+I0003|cpu|ADD|R0|R1|R0|0x0|width=1048576;mode=wrapping
+I0004|cpu|CMP|R0|R2|R0|0x0|width=1048576;mode=wrapping
+I0005|cpu|JNZ|R0|R0|R0|0x3|width=1048576;mode=wrapping
+I0006|cpu|STORE|R0|R0|R0|0x0|width=1048576;mode=wrapping
+I0007|cpu|LOAD|R3|R0|R0|0x0|width=1048576;mode=wrapping
+I0008|cpu|PUSH|R0|R0|R3|0x0|width=1048576;mode=wrapping
+I0009|cpu|POP|R4|R0|R0|0x0|width=1048576;mode=wrapping
+I0010|cpu|SVC|R0|R0|R4|0x1|width=1048576;mode=wrapping
+I0011|cpu|MOVI|R5|R0|R0|0xa|width=1048576;mode=wrapping
+I0012|cpu|SVC|R0|R0|R5|0x4|width=1048576;mode=wrapping
+I0013|cpu|HALT|R0|R0|R0|0x0|width=1048576;mode=wrapping
+@end
+@sha256 e084266af54b386993d7730aca3af419eeff1d91eb521ca8224be5787dbbe75c
