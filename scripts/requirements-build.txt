@@ -1,0 +1,3 @@
+# ISO authoring only. No build dependency is bundled with the repository.
+# Metadata: https://pypi.org/pypi/pycdlib/1.21.0/json
+pycdlib==1.21.0 --hash=sha256:1a82cd735542921d0dd7bc40381e7b7b9cbc70bd4c03e4f67a0531d59d2f518e
