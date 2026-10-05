@@ -1,0 +1,7 @@
+#!/bin/sh
+# Optional, user-authored application integration point.
+# Copy to appliance/application.start, replace this body, then build with
+# --include-application-hook. It runs as the unprivileged ultrawide account.
+# No application hook is enabled or included in the default image.
+set -eu
+exec /usr/local/bin/ultrawide demo

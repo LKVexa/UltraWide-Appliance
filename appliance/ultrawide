@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+export PYTHONPATH=/opt/ultrawide/src
+export PYTHONDONTWRITEBYTECODE=1
+exec /usr/bin/python3 -B -m ultrawide "$@"

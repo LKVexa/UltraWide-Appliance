@@ -1,0 +1,23 @@
+#!/bin/sh
+# Diskless preview: install signed local dependencies in guest RAM only.
+set -eu
+exec >>/dev/console 2>&1
+echo "ULTRAWIDE_GUEST_UNAME=$(uname -srmo)"
+echo 'ULTRAWIDE_STATE_MODE=volatile_RAM'
+echo 'Installing the hash-pinned, signed local Python packages without network...'
+# This is deliberately diskless: admit local packages that vanish at shutdown.
+# Signature checks remain enabled; --force-non-repository is not --allow-untrusted.
+/sbin/apk add --no-network --no-cache --force-non-repository /opt/ultrawide/packages/*.apk
+id ultrawide >/dev/null 2>&1 || adduser -D -h /home/ultrawide -s /bin/sh ultrawide
+ip link set lo up
+echo 'ULTRAWIDE_BOOT_SELF_TEST_BEGIN'
+su -s /bin/sh -c '/usr/local/bin/ultrawide self-test' ultrawide
+echo 'ULTRAWIDE_BOOT_SELF_TEST_END'
+echo 'Preview console: root, no password. No SSH service or network interface is configured.'
+echo 'Try: ultrawide demo'
+echo 'Try: ultrawide run /opt/ultrawide/examples/high-bit.uwa'
+echo 'Shut down with: poweroff'
+if [ -x /opt/ultrawide/appliance/application.start ]; then
+    echo 'Starting the application hook explicitly included by this image builder...'
+    su -s /bin/sh -c 'exec /opt/ultrawide/appliance/application.start' ultrawide &
+fi
